@@ -1,0 +1,16 @@
+language: node
+
+node_js: 14
+
+cache:
+  directories:
+    - ~/.cache/yarn
+    - node_modules
+    - .next/cache
+
+install:
+  - yarn install --frozen-lockfile
+
+script:
+  - yarn lint
+  - yarn test
