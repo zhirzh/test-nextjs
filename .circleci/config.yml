@@ -23,7 +23,7 @@ jobs:
       - run:
           command: yarn lint
 
-      - run: yarn testx
+      - run: yarn test
 
 workflows:
   test:
