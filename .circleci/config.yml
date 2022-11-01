@@ -21,9 +21,9 @@ jobs:
             - .next/cache
 
       - run:
-          command: yarn lint
-
-      - run: yarn test
+          command: |
+            yarn lint
+            yarn test
 
 workflows:
   test:
