@@ -1,5 +1,22 @@
 version: 2.1
 
+parameters:
+  GHA_Actor:
+    type: string
+    default: ''
+
+  GHA_Action:
+    type: string
+    default: ''
+
+  GHA_Event:
+    type: string
+    default: ''
+
+  GHA_Meta:
+    type: string
+    default: ''
+
 jobs:
   test:
     docker:
@@ -25,6 +42,14 @@ jobs:
           command: |
             yarn lint
             yarn test
+
+      - run:
+          name: GHA
+          command: |
+            echo "GHA_Actor: $GHA_Actor"
+            echo "GHA_Action: $GHA_Action"
+            echo "GHA_Event: $GHA_Event"
+            echo "GHA_Meta: $GHA_Meta"
 
 workflows:
   test:
