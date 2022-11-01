@@ -1,6 +1,35 @@
 version: 2.1
 
+parameters:
+  GHA_Actor:
+    type: string
+    default: ''
+
+  GHA_Action:
+    type: string
+    default: ''
+
+  GHA_Event:
+    type: string
+    default: ''
+
+  GHA_Meta:
+    type: string
+    default: ''
+
 jobs:
+  GHA:
+    docker:
+      - image: cimg/node:14.20
+    steps:
+      - run:
+          name: echo GHA
+          command: |
+            echo "GHA_Actor: $GHA_Actor"
+            echo "GHA_Action: $GHA_Action"
+            echo "GHA_Event: $GHA_Event"
+            echo "GHA_Meta: $GHA_Meta"
+
   test:
     docker:
       - image: cimg/node:14.20
@@ -29,4 +58,5 @@ jobs:
 workflows:
   test:
     jobs:
+      - GHA
       - test
