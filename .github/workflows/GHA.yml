@@ -12,10 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: test foobar
+      - name: print GHA
         if: contains(github.event.pull_request.labels.*.name, 'foobar')
         run: |
-          echo foobar
+          echo $GITHUB_HEAD_REF
+          cat $GITHUB_EVENT_PATH
 
       - name: CircleCI Trigger on Pull Request
         if: contains(github.event.pull_request.labels.*.name, 'foobar')
