@@ -21,6 +21,6 @@ jobs:
       - name: CircleCI Trigger on Pull Request
         if: contains(github.event.pull_request.labels.*.name, 'foobar')
         id: foobar
-        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0
+        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0.5
         env:
           CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
