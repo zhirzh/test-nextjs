@@ -24,6 +24,7 @@ jobs:
           cat $GITHUB_EVENT_PATH
 
       - name: print all env
+        if: contains(github.event.pull_request.labels.*.name, 'foobar')
         run: |
           node -e 'Object.keys(process.env).sort().forEach(k => {
             console.log("-".repeat(10))
