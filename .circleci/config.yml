@@ -5,19 +5,19 @@ jobs:
     parameters:
       GHA_Actor:
         type: string
-        default: ''
+        default: 'foo actor'
 
       GHA_Action:
         type: string
-        default: ''
+        default: 'foo action'
 
       GHA_Event:
         type: string
-        default: ''
+        default: 'foo event'
 
       GHA_Meta:
         type: string
-        default: ''
+        default: 'foo meta'
 
     docker:
       - image: cimg/node:14.20
