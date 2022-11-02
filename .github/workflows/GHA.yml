@@ -31,6 +31,10 @@ jobs:
             console.log(process.env[k])
           })'
 
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+
+
 
       # - name: CircleCI Trigger on Pull Request
       #   id: foobar
