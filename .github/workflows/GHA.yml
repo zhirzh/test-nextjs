@@ -3,6 +3,7 @@ name: GHA
 on:
   pull_request:
     types:
+      - edited
       - labeled
       - unlabeled
 
@@ -15,8 +16,12 @@ jobs:
     steps:
       - name: branch name
         run: |
-          echo $GITHUB_REF_NAME
-          node -e 'console.log(Object.keys(process.env).sort())'
+          echo $GITHUB_HEAD_REF
+          node -e 'Object.keys(process.env).sort().forEach(k => {
+            console.log("-".repeat(10))
+            console.log(k)
+            console.log(process.env[k])
+          })'
 
       # - name: CircleCI Trigger on Pull Request
       #   id: foobar
