@@ -8,8 +8,8 @@ on:
   pull_request:
     types:
       - edited
-      - labeled
-      - unlabeled
+#       - labeled
+#       - unlabeled
 
 jobs:
   trigger-circleci:
@@ -32,8 +32,10 @@ jobs:
             console.log(process.env[k])
           })'
 
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+
+
+#       - name: Setup upterm session
+#         uses: lhotari/action-upterm@v1
 
 
 
