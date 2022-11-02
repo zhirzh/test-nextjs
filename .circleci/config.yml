@@ -1,24 +1,24 @@
 version: 2.1
 
-parameters:
-  GHA_Actor:
-    type: string
-    default: 'foo actor'
-
-  GHA_Action:
-    type: string
-    default: 'foo action'
-
-  GHA_Event:
-    type: string
-    default: 'foo event'
-
-  GHA_Meta:
-    type: string
-    default: 'foo meta'
-
 jobs:
   GHA:
+    parameters:
+      GHA_Actor:
+        type: string
+        default: 'foo actor'
+
+      GHA_Action:
+        type: string
+        default: 'foo action'
+
+      GHA_Event:
+        type: string
+        default: 'foo event'
+
+      GHA_Meta:
+        type: string
+        default: 'foo meta'
+
     docker:
       - image: cimg/node:14.20
     steps:
