@@ -1,0 +1,25 @@
+name: GHA
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - unlabeled
+
+jobs:
+  trigger-circleci:
+    # if: ${{ github.event.issue.pull_request }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: branch name
+        run: |
+          echo $GITHUB_REF_NAME
+          node -e 'console.log(Object.keys(process.env).sort())'
+
+      # - name: CircleCI Trigger on Pull Request
+      #   id: foobar
+      #   uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0
+      #   env:
+      #     CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
