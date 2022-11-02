@@ -1,46 +1,23 @@
 name: GHA
 
 on:
-  issue_comment:
-    type:
-      - created
-
   pull_request:
     types:
       - synchronize
-#       - labeled
-#       - unlabeled
 
 jobs:
   trigger-circleci:
-    # if: ${{ github.event.issue.pull_request }}
-
     runs-on: ubuntu-latest
 
     steps:
-      - name: GITHUB env
-        run: |
-          echo $GITHUB_HEAD_REF
-          cat $GITHUB_EVENT_PATH
-
-      - name: print all env
+      - name: test foobar
         if: contains(github.event.pull_request.labels.*.name, 'foobar')
         run: |
-          node -e 'Object.keys(process.env).sort().forEach(k => {
-            console.log("-".repeat(10))
-            console.log(k)
-            console.log(process.env[k])
-          })'
+          echo foobar
 
-
-
-#       - name: Setup upterm session
-#         uses: lhotari/action-upterm@v1
-
-
-
-      # - name: CircleCI Trigger on Pull Request
-      #   id: foobar
-      #   uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0
-      #   env:
-      #     CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
+      - name: CircleCI Trigger on Pull Request
+        if: contains(github.event.pull_request.labels.*.name, 'foobar')
+        id: foobar
+        uses: CircleCI-Public/trigger-circleci-pipeline-action@v1.0
+        env:
+          CCI_TOKEN: ${{ secrets.CCI_TOKEN }}
