@@ -19,22 +19,22 @@ parameters:
 
 jobs:
   GHA:
-    parameters:
-      GHA_Actor:
-        type: string
-        default: 'foo actor'
+    # parameters:
+    #   GHA_Actor:
+    #     type: string
+    #     default: 'foo actor'
 
-      GHA_Action:
-        type: string
-        default: 'foo action'
+    #   GHA_Action:
+    #     type: string
+    #     default: 'foo action'
 
-      GHA_Event:
-        type: string
-        default: 'foo event'
+    #   GHA_Event:
+    #     type: string
+    #     default: 'foo event'
 
-      GHA_Meta:
-        type: string
-        default: 'foo meta'
+    #   GHA_Meta:
+    #     type: string
+    #     default: 'foo meta'
 
     docker:
       - image: cimg/node:14.20
@@ -43,10 +43,10 @@ jobs:
       - run:
           name: echo GHA
           command: |
-            echo "GHA_Actor: << parameters.GHA_Actor >>"
-            echo "GHA_Action: << parameters.GHA_Action >>"
-            echo "GHA_Event: << parameters.GHA_Event >>"
-            echo "GHA_Meta: << parameters.GHA_Meta >>"
+            echo "GHA_Actor: << pipeline.parameters.GHA_Actor >>"
+            echo "GHA_Action: << pipeline.parameters.GHA_Action >>"
+            echo "GHA_Event: << pipeline.parameters.GHA_Event >>"
+            echo "GHA_Meta: << pipeline.parameters.GHA_Meta >>"
 
   test:
     docker:
