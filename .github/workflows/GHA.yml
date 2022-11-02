@@ -4,6 +4,8 @@ on:
   pull_request:
     types:
       - synchronize
+      - labeled
+      - unlabeled
 
 jobs:
   trigger-circleci:
