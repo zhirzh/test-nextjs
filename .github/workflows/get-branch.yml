@@ -6,21 +6,17 @@ on:
     types: [created, edited, synchronise]
 
 jobs:
-  job-branch:
+  pr-comment:
     runs-on: ubuntu-latest
 
     steps:
-      - name: get
-        id: branch-name
-        uses: tj-actions/branch-names@v6
+      - name: get branch
+        id: comment-branch
+        uses: xt0rted/pull-request-comment-branch@v1
 
-      - name: print env
+      - name: print output
         run: |
-          echo "base_ref_branch: ${{ steps.branch-name.outputs.base_ref_branch }}"
-          echo "current_branch: ${{ steps.branch-name.outputs.current_branch }}"
-          echo "default_branch: ${{ steps.branch-name.outputs.default_branch }}"
-          echo "head_ref_branch: ${{ steps.branch-name.outputs.head_ref_branch }}"
-          echo "is_default: ${{ steps.branch-name.outputs.is_default }}"
-          echo "is_tag: ${{ steps.branch-name.outputs.is_tag }}"
-          echo "ref_branch: ${{ steps.branch-name.outputs.ref_branch }}"
-          echo "tag: ${{ steps.branch-name.outputs.tag }}"
+          echo "base_ref: ${{ steps.comment-branch.outputs.base_ref }}"
+          echo "base_sha: ${{ steps.comment-branch.outputs.base_sha }}"
+          echo "head_ref: ${{ steps.comment-branch.outputs.head_ref }}"
+          echo "head_sha: ${{ steps.comment-branch.outputs.head_sha }}"
