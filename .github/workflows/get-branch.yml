@@ -1,1 +1,19 @@
+on:
+  issue_comment:
+    types: [created]
 
+  pull_request:
+    types: [created, edited, synchronise]
+
+jobs:
+  job-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: get
+        id: branch-name
+        uses: tj-actions/branch-names@v6
+
+      - name: print env
+        run: |
+          node -e 'console.log(process.env)'
